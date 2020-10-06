@@ -56,6 +56,18 @@ import axios from 'axios'
             .then(response => {
                 this.posts = response.data.data;
             });
+        },
+        methods: {
+            PostDelete(id){
+                axios.delete(`http://localhost:8000/posts/${id}`)
+                .then(response => {
+                    this.posts.splice(this.posts.indexOf(id), 1);
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error.response);
+                }); 
+            }
         }
     }
 </script>
